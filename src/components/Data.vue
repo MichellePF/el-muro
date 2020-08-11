@@ -1,10 +1,13 @@
 <template>
-    <div>
+    <div class="container">
         <div class="wrap">
             <a><router-link :to="{path:'/login'}">Login</router-link></a>
-            <button @click="logOut">Salir</button>
+            <a @click="logOut">Log Out</a>
         </div>
         <h1>Hola {{user}}</h1>
+        <div class="container_img">
+            <img src="../assets/lux.jpg" alt="" height="600px">
+        </div>
     </div>
 </template>
 
@@ -25,6 +28,10 @@ export default {
 </script>
 
 <style scoped>
+.container {
+    height: 800px;
+}
+
 .wrap {
     text-align: end;
     margin-bottom: 20px;
@@ -35,5 +42,6 @@ export default {
     color: white;
     padding: 15px;
     text-decoration: none;
+    margin-right: 10px;
 }
 </style>
