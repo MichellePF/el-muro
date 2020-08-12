@@ -17,7 +17,8 @@ Vue.use(VueFirestore, {key: 'id'});
 const store = new Vuex.Store({
   state: {
     user: null,
-    error: null
+    error: null,
+    like: 0
   },
   mutations: {
     set_user(state, new_user){
@@ -25,6 +26,9 @@ const store = new Vuex.Store({
     },
     set_error(state, new_error){
       state.error = new_error;
+    },
+    incremento(state){
+      state.like++
     }
   },
   actions: {
