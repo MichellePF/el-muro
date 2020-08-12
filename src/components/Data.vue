@@ -4,7 +4,7 @@
             <a><router-link :to="{path:'/login'}">Login</router-link></a>
             <a @click="logOut">Log Out</a>
         </div>
-        <h1>Hola {{user}}</h1>
+        <h1 v-if="user">Hola {{user.displayName}}</h1>
         <div class="container_img">
             <img src="../assets/lux.jpg" alt="" height="600px">
         </div>

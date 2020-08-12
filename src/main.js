@@ -31,11 +31,18 @@ const store = new Vuex.Store({
     register(context, datos) {
       firebase.auth().createUserWithEmailAndPassword(datos.email, datos.password)
       // en el caso de que el registro sea exitoso
-      .then(function (response) {
-        console.log(response);
+      .then(function () {
+        // console.log(response);
+        firebase.auth().currentUser.updateProfile({
+        displayName: datos.name
+        })
+      })
+      .then(function(response){
+        console.log(response)
         context.commit('set_error', null);
-        context.commit('set_user', datos.email);
+        context.commit('set_user', {email: datos.email, displayName: datos.name});
         router.push('/');
+        
       })
       // en el caso de que ocurra un error
       .catch(function (error) {
@@ -47,9 +54,8 @@ const store = new Vuex.Store({
       firebase.auth().signInWithEmailAndPassword(datos.email, datos.password)
       .then(function(response){
         console.log(response)
-        console.log(datos.email)
         context.commit('set_error', null);
-        context.commit('set_user', datos.email);
+        context.commit('set_user', response.user);
         router.push('/');
       })
       .catch(function(error){

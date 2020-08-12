@@ -30,7 +30,12 @@
     
             <h1>Registrate</h1>
             <div class="contenedor">
-     
+                
+                <div class="input-contenedor">
+                    <i class="fas fa-envelope icon"></i>
+                    <input required type="text" placeholder="Nombre" v-model="name">
+         
+                </div>
                 <div class="input-contenedor">
                     <i class="fas fa-envelope icon"></i>
                     <input required type="email" placeholder="Correo Electronico" v-model="email">
@@ -67,6 +72,7 @@ export default {
             email_login:"",
             password_login: "",
 
+            name: "",
             email: "",
             password: "",
             password_again: ""
@@ -96,7 +102,7 @@ export default {
                 alert('Las contraseñas deben coincidir')
                 return;
             }
-            const datos = {email: this.email, password: this.password};
+            const datos = {email: this.email, password: this.password, name:this.name};
             this.$store.dispatch('register', datos)
         }
     }
@@ -147,6 +153,7 @@ h1{
     font-size: 40px;
 }
 input[type="email"],
+input[type="text"],
 input[type="password"]{
     font-size: 20px;
     width: 100%;
